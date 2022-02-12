@@ -186,36 +186,3 @@ class Emitlib{
         return this.#registry?.[eventType]?.[eventName]?.eventList
     }
 }
-const ev=new Emitlib({
-    useModeStrict:true,
-    typesValid:['nom']
-})
-
-console.log(ev);
-ev.nom="Rolio"
-console.log(ev);
-ev.createEvent('nom','Rolio',{
-    onBeforeAllEvent(){
-        console.log('onBeforeAllEvent');
-    },
-    onBeforeEachEvent(){
-        console.log('onBeforeEachEvent');
-    },
-    onAfterAllEvent(){
-        console.log('onAfterAllEvent');
-    },
-    onAfterEachEvent(){
-        console.log('onAfterEachEvent');
-    },
-    eventState:{
-        nom:'Rabe',
-        prenom:'Rolio'
-    }
-})
-ev.on('nom','Rolio',(ev,dataEmit,option)=>{
-    console.log('ev1',ev);
-})
-const key=ev.on('nom','Rolio',(ev,dataEmit,option)=>{
-    console.log('ev2',ev);
-})
-console.log(ev.removeEvent('nom','Rolio',key));
